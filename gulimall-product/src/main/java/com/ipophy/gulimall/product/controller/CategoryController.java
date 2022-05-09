@@ -1,6 +1,7 @@
 package com.ipophy.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,14 +33,12 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * 列表
+     * return all categories and its sub-categories, as tree
      */
-    @RequestMapping("/list")
-    //@RequiresPermissions("product:category:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
-
-        return R.ok().put("page", page);
+    @RequestMapping("/list/tree")
+    public R list(){
+        List<CategoryEntity> entityList = categoryService.listAsTree();
+        return R.ok().put("categoryList", entityList);
     }
 
 

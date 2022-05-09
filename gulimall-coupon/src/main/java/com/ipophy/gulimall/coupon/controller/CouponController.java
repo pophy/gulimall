@@ -5,6 +5,8 @@ import java.util.Map;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +29,29 @@ import com.ipophy.common.utils.R;
  */
 @RestController
 @RequestMapping("coupon/coupon")
+@RefreshScope
 public class CouponController {
     @Autowired
     private CouponService couponService;
+
+
+    @Value("${setting1}")
+    private String setting1;
+
+    @Value("${setting2}")
+    private String setting2;
+    @RequestMapping("/testConfig")
+    public R testNacosConfig() {
+        return R.ok().put("S1", setting1).put("S2", setting2);
+    }
+
+    @RequestMapping("/member/list")
+    public R memberCoupons() {
+        CouponEntity couponEntity = new CouponEntity();
+        couponEntity.setCouponName("70% OFF");
+        return R.ok().put("coupons", Arrays.asList(couponEntity));
+    }
+
 
     /**
      * 列表
