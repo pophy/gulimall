@@ -8,18 +8,17 @@
         <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.ipophy</groupId>
-    <artifactId>gulimall-member</artifactId>
+    <groupId>com.ipophy.gulimall</groupId>
+    <artifactId>gulimall-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gulimall-member</name>
-    <description>gulimall-member</description>
-
+    <name>gulimall-gateway</name>
+    <description>gulimall-gateway</description>
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.2</spring-cloud.version>
     </properties>
-
     <dependencies>
+
         <dependency>
             <groupId>com.ipophy.gulimall</groupId>
             <artifactId>gulimall-common</artifactId>
@@ -27,12 +26,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
         <dependency>
